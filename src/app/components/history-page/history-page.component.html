@@ -1,0 +1,72 @@
+<!-- <p>history-page works!</p> -->
+
+<div>
+
+  <label>
+    Go to Past Search :
+  </label>
+  <a class="btn btn-success" style="margin-left: 24px" [routerLink]="['/components/past-search-page']">
+    <svg cIcon name="cilMagnifyingGlass"></svg></a>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+
+<div  *ngIf="showDiv">
+  <p style="border-top:8px solid black;"></p>
+
+  <label style="font-size: 24px; font-style: italic;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+   Github Search History Data :
+  </label>
+  <div  class="col-lg-12">
+  <br>
+  <br>
+  <div *ngFor = "let results of historyData ; let a = index">
+    <br>
+
+    <p style=" border-top: 4px solid black;">
+    <b>[{{a+1}}]</b>
+    </p>
+    <p style="margin-left:65px;">
+
+<button type="button" (click)="deleteEntry(a)"> <svg cIcon class="me-2" name="cilTrash"></svg></button>
+    </p>
+    <br>
+<table class="table table-hover">
+  <thead>
+<tr>
+  <!-- <th scope="col">#</th> -->
+  <th scope="col"> Details</th>
+  <th scope="col">Values</th>
+
+</tr>
+  </thead>
+  <tbody>
+
+
+  <tr  *ngFor = "let result of results |keyvalue;" >
+<!-- <th>
+  [{{a+1}}]
+</th> -->
+    <ng-container>
+      <!-- <td>
+ [{{a+1}}]
+      </td> -->
+      <td>
+       <b> {{result.key}}  </b>
+
+      </td>
+      <td>
+        <b>{{result.value}}</b>
+      </td>
+    </ng-container>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>

@@ -1,0 +1,46 @@
+<!-- <p>search-page works!</p> -->
+
+<div class="panel-body">
+  <!-- (ngSubmit)="githubSearch(gitSearchForm.value)" -->
+  <form  [formGroup]="gitSearchForm">
+
+    <div class="form-group col-lg-12">
+<div   style = "display: inline-block;">
+  <label>
+    Enter the Username to search in github :
+  </label>
+
+  <input  type="text"  style="width:240px; height: 45px; margin-left: 24px;" [formControl]="gitSearchForm.controls['gitUsername']" formControlName="gitUsername" >
+
+</div>
+
+  <button type = "submit"  style="margin-left: 44px;" class="btn btn-success " (click) = "githubSearch(gitSearchForm.value)">
+Search
+  </button>
+
+    </div>
+  </form>
+</div>
+
+<!-- <button type="button"  (click) = "githubSearch('suchetaswabhav')">search</button> -->
+
+<div *ngIf = "showDiv" >
+  <label style="margin-top:33px ; font-size: 24px; font-style: italic;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+   <b> Details:</b>
+  </label>
+
+<div *ngFor="let result of searchResultObject |keyvalue ">
+  <label *ngIf ="result.key !== 'url'">
+  <b>  {{result.key}}  </b>  : {{result.value}}
+  </label>
+
+  <label *ngIf ="result.key == 'url'">
+    <b>  {{result.key}}  </b>  : <a href = ${result.value}  target="_blank">{{result.value}}</a>
+    </label>
+</div>
+
+
+</div>
+
+<!-- <app-history-page style="display:none" (passArray)="myFunction($event)"></app-history-page> -->
+
